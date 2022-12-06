@@ -1,1 +1,5 @@
-[]
+[{
+    "name": "Sample Dotfile",
+    "src": "~/.dotfile-chief.sample",
+    "dest": ".sample"
+}]
