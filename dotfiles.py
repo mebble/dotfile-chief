@@ -31,7 +31,8 @@ def diff(name, src, dest):
             d_lines = d.readlines()
             s_lines = s.readlines()
 
-            for diff in unified_diff(d_lines, s_lines, fromfile='dest', tofile='src'):
+            print(f'[INFO] Diffing dotfile {name}:')
+            for diff in unified_diff(d_lines, s_lines, fromfile='dest (onboarded to dotfiles)', tofile='src (in your computer)'):
                 print(diff)
 
 def get_cmd():
