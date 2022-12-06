@@ -3,6 +3,7 @@ import os
 import shutil
 import sys
 from pathlib import Path
+from difflib import unified_diff
 
 def touch(path):
     Path(os.path.dirname(path)).mkdir(parents=True, exist_ok=True)
@@ -24,6 +25,15 @@ def release(name, src, dest):
     except FileNotFoundError:
         print(f'[FAIL] dotfile {name} not found at {dest}')
 
+def diff(name, src, dest):
+    with open(dest) as d:
+        with open(src) as s:
+            d_lines = d.readlines()
+            s_lines = s.readlines()
+
+            for diff in unified_diff(d_lines, s_lines, fromfile='dest', tofile='src'):
+                print(diff)
+
 def get_cmd():
     try:
         cmd = sys.argv[1]
@@ -31,12 +41,13 @@ def get_cmd():
         return ''
     return cmd
 
-def get_operation():
-    command_map = {
-        'onboard': onboard,
-        'release': release,
-    }
+command_map = {
+    'onboard': onboard,
+    'release': release,
+    'diff': diff,
+}
 
+def get_operation():
     cmd = get_cmd()
     operation = command_map.get(cmd)
 
@@ -53,7 +64,7 @@ def validate(dotfiles):
 if __name__ == '__main__':
     operate = get_operation()
     if operate is None:
-        print('Usage: python3 dotfiles.py (onboard | release)')
+        print(f'Usage: python3 dotfiles.py ({" | ".join(command_map.keys())})')
         exit(1)
 
     home_dir = os.environ['HOME']

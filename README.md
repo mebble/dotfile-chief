@@ -29,6 +29,12 @@ Release files from dotfiles to your computer:
 python3 dotfiles.py release
 ```
 
+Find the differences between onboarded dotfiles and those in your computer:
+
+```bash
+python3 dotfiles.py diff
+```
+
 ## Inspiration:
 
 - https://dev.to/awais/comment/1boc8
