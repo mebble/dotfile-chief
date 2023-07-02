@@ -38,3 +38,7 @@ python3 dotfiles.py diff
 ## Inspiration:
 
 - https://dev.to/awais/comment/1boc8
+
+## Alternative Tools
+
+- [GNU Stow](https://www.gnu.org/software/stow/)
