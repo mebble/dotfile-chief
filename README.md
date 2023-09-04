@@ -1,5 +1,7 @@
 # Dotfile Chief
 
+_No longer maintained. Moved to GNU stow_
+
 ## dotfiles.json
 
 ```json5
@@ -42,3 +44,4 @@ python3 dotfiles.py diff
 ## Alternative Tools
 
 - [GNU Stow](https://www.gnu.org/software/stow/)
+- [dotbot](https://github.com/anishathalye/dotbot)
